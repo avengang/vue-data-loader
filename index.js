@@ -1,4 +1,6 @@
 module.exports = function(source) {
-	source = source.replace('@vue-data', ' new window.VueData').replace('</script>', ')</script>')
+	if(source.indexOf('@vue-data') !== -1) {
+		source = source.replace('@vue-data', ' new window.VueData').replace('</script>', ')</script>')
+	}
   return source;
 };
