@@ -1,6 +1,6 @@
 {
   "name": "vue-data-loader",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "vue-data helper",
   "main": "index.js",
   "scripts": {

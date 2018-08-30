@@ -1,5 +1,5 @@
 module.exports = function(source) {
-	var scriptIndex == source.lastIndexOf('<script>')
+	var scriptIndex = source.lastIndexOf('<script>')
 	if(scriptIndex !== -1) { // 有<script>
 		var sourcepart1 = source.substring(0, scriptIndex)
 		var sourcepart2 = source.substr(scriptIndex)
