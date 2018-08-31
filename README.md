@@ -1,6 +1,12 @@
 # vue-data-loader
-使用方式：
-只需要在vue后缀的文件的loader列表中新增vue-data-loader就可以了，如@vue/cli 中的vue.config.js
+### 安装
+```
+npm install vue-data-loader --save-dev
+```
+### 使用
+只需要在vue后缀的文件的loader列表中新增vue-data-loader就可以了  
+
+如@vue/cli 中的vue.config.js
 ```
 chainWebpack: (config) => {
   config.resolve.alias
