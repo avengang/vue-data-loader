@@ -12,12 +12,5 @@ module.exports = function(source) {
 	} else { // 没有<script>
 		source = source + '<script>export default new window.VueData({})</script>'
 	}
-	var cpath = __dirname.replace("\\node_modules\\vue-storescanner-loader", "");
-	var componentPath = this.resourcePath.replace(cpath, "").replace(/\\/g, "_")
-		.replace(/\//g, "_").replace(".vue", "");
-		
-	if(componentPath.indexOf(":") != -1) {
-		componentPath = componentPath.split(":")[1];
-	}
   return source;
 };
