@@ -1,12 +1,16 @@
 module.exports = function(source) {
-	var scriptIndex = source.lastIndexOf('<script>')
+	var scriptIndex = source.lastIndexOf('<script')
 	if(scriptIndex !== -1) { // 有<script>
 		var sourcepart1 = source.substring(0, scriptIndex)
 		var sourcepart2 = source.substr(scriptIndex)
 		if(sourcepart2.replace(/\s*/gm, '').indexOf('exportdefault') !== -1) { // 有export default
 			sourcepart2 = sourcepart2.replace(/export[\s]*default/gm, 'export default new window.VueData(').replace(/}[\s]*[,|;]?[\s]*<\/script>/, '})</script>')
 		} else { // 没有export default
-			sourcepart2 = sourcepart2.replace('<script>', '<script>export default new window.VueData({').replace('</script>', '})</script>')
+      var scriptRightIndex = sourcepart2.indexOf('>')
+      var sourcepart21 = sourcepart2.substring(0, scriptRightIndex)
+      var sourcepart22 = sourcepart2.substr(scriptRightIndex)
+			sourcepart22 = sourcepart22.replace('>', '>export default new window.VueData({').replace('</script>', '})</script>')
+      sourcepart2 = sourcepart21 + sourcepart22
 		}
 		source = sourcepart1 + sourcepart2
 	} else { // 没有<script>
