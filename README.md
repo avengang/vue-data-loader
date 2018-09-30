@@ -21,3 +21,16 @@ chainWebpack: (config) => {
       .end()
 }
 ```
+其他webpack版本配置
+```
+module: {
+  rules: [
+    /* 用来解析vue后缀的文件 */
+    {
+        test: /\.vue$/,
+        loader: 'vue-loader!vue-data-loader'
+    },
+    //...
+  ]
+}         
+```
