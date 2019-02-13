@@ -1,4 +1,5 @@
 module.exports = function(source) {
+	var moduleName = this.resourcePath.replace(__dirname.split('node_modules')[0], '').replace(/\//g, "_").replace(/\\/g, "_").replace(/.js$/, "").replace(/.vue$/, "")
 	var scriptIndex = source.lastIndexOf('<script')
 	if(scriptIndex !== -1) { // 有<script>
 		var sourcepart1 = source.substring(0, scriptIndex)
@@ -16,5 +17,6 @@ module.exports = function(source) {
 	} else { // 没有<script>
 		source = source + '<script>export default new window.VueData({})</script>'
 	}
-  return source;
+	source = source.replace(/new window.VueData\([\s]*\{/m, 'new window.VueData({viewname:"'+moduleName+'",')
+  return source
 };
